@@ -105,9 +105,9 @@ function setupAudioPipeline(){
   }
   navigator.getUserMedia({
     audio: {
-      echoCancellation: false,
-      noiseSuppression: false,
-      autoGainControl: false,
+      echoCancellation: true,
+      noiseSuppression: true,
+      autoGainControl: true,
     }
   }, function (stream) {
     mediaStream = stream;
