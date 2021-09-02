@@ -1,0 +1,44 @@
+<html>
+<head>
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript" src="noise.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body onload="bodyLoaded()">
+<div id="main" style="">
+		<div id="layoutContainer" style="position:absolute;background:black;margin-left:10%;margin-right:10%;top:2%;width:80%;height:80%">
+			
+		</div>
+    <div id="controls" style="position:absolute;background: grey;margin-left: 10%;margin-right: 10%;top:82%;width:80%;height:53px">
+      <div style="margin-left:45%;margin-right:50%;width: 120px;position: absolute;margin-top:10px">
+        <button onclick="start()" id="connectBtn"> Connect </button>
+      </div>
+      <div style="right: 30%;width: 100px;position: absolute;margin-top:10px">
+        <div class="select">
+          <button id="noiseToggleBtn" onclick="noiseToggle()"> Denoiser OFF</button>
+        </div>
+      </div>
+      <div style="right: 80%;width: 100px;position: absolute;margin-top:10px">
+      </div>
+    </div>
+  </div>
+  <script>
+   var layoutContainer = document.getElementById("layoutContainer");
+   var layout = undefined;
+   $.getScript("https://static.opentok.com/v2/js/opentok.min.js", (data, textStatus, jqxhr) => {
+    $.getScript("opentok-layout.min.js", () => {
+      // Initialize the layout container and get a reference to the layout method
+      layout = initLayoutContainer(layoutContainer, {
+        animate: {
+          duration: 500,
+          easing: "swing"
+        },
+        fixedRatio: true,
+        bigFixedRatio: false,
+        bigClass: "big"
+      }).layout;
+    });
+  });
+</script>
+</body>
+</html>
